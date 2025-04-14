@@ -1,0 +1,21 @@
+package com.example.usuarios_servicio.controller;
+
+
+import com.example.usuarios_servicio.model.Usuario;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/usuarios/")
+public class UsuarioController {
+
+    @GetMapping
+    public List<Usuario> obtenerUsuarios() {
+        List<Usuario> usuarios = new ArrayList<>();
+        usuarios.add(new Usuario(1L, "Juan Pérez", "juan@correo.com"));
+        usuarios.add(new Usuario(2L, "María Gómez", "maria@correo.com"));
+        return usuarios;
+    }
+}

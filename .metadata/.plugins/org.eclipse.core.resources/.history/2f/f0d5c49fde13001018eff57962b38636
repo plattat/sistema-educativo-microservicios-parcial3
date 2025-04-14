@@ -1,0 +1,21 @@
+package com.example.asignaturas_servicio.controller;
+
+import com.example.asignaturas_servicio.model.Asignatura;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@RestController
+@RequestMapping("/asignaturas")
+public class AsignaturaController {
+
+    @GetMapping
+    public List<Asignatura> obtenerTodas() {
+        List<Asignatura> lista = new ArrayList<>();
+        lista.add(new Asignatura(1L, "Matemáticas"));
+        lista.add(new Asignatura(2L, "Historia"));
+        lista.add(new Asignatura(3L, "Biología"));
+        return lista;
+    }
+}

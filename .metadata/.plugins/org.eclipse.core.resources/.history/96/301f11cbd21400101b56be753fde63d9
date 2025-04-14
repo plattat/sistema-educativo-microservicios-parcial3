@@ -1,0 +1,24 @@
+package com.example.matriculas_servicio.servicio;
+
+import com.example.matriculas_servicio.model.Asignatura;
+import com.example.matriculas_servicio.model.Usuario;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class MatriculaService {
+
+    @Autowired
+    private UsuarioClient usuarioClient;
+
+    @Autowired
+    private AsignaturaClient asignaturaClient;
+
+    public String registrarMatricula(Long usuarioId, Long asignaturaId) {
+        Usuario usuario = usuarioClient.obtenerUsuarioPorId(usuarioId);
+        Asignatura asignatura = asignaturaClient.obtenerAsignaturaPorId(asignaturaId);
+
+        // Aquí puedes registrar la matrícula en base de datos, por ahora solo simular:
+        return "Usuario " + usuario.getNombre() + " matriculado en " + asignatura.getNombre();
+    }
+}

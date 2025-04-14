@@ -1,0 +1,20 @@
+spring.application.name=api-gateway
+server.port=8080
+spring.cloud.config.enabled=false
+
+# Habilitar Eureka
+eureka.client.service-url.defaultZone=http://localhost:8761/eureka
+eureka.client.register-with-eureka=true
+eureka.client.fetch-registry=true
+
+spring.cloud.gateway.routes[0].id=usuarios-servicio
+spring.cloud.gateway.routes[0].uri=lb://usuarios-servicio
+spring.cloud.gateway.routes[0].predicates[0]=Path=/api/usuarios/**
+
+spring.cloud.gateway.routes[1].id=asignaturas-servicio
+spring.cloud.gateway.routes[1].uri=lb://asignaturas-servicio
+spring.cloud.gateway.routes[1].predicates[0]=Path=/api/asignaturas/**
+
+spring.cloud.gateway.routes[2].id=matriculas-servicio
+spring.cloud.gateway.routes[2].uri=lb://matriculas-servicio
+spring.cloud.gateway.routes[2].predicates[0]=Path=/api/matriculas/**

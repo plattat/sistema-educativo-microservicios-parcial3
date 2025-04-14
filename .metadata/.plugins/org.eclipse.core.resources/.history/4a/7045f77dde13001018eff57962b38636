@@ -1,0 +1,21 @@
+package com.example.matriculas_servicio.controller;
+
+import com.example.matriculas_servicio.model.Matricula;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@RestController
+@RequestMapping("api/matriculas")
+public class MatriculaController {
+
+    @GetMapping
+    public List<Matricula> obtenerMatriculas() {
+        List<Matricula> matriculas = new ArrayList<>();
+        matriculas.add(new Matricula(1L, 1L, 1L)); // Juan Pérez → Matemáticas
+        matriculas.add(new Matricula(2L, 2L, 2L)); // María Gómez → Física
+        return matriculas;
+    }
+}
+

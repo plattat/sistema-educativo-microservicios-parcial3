@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+
+  spring-api-matriculas-servicios:
+    image: spring-api-matriculas-servicios
+    container_name: spring-api-matriculas-servicios-container
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8083:8083"
+    networks:
+      - api-network
+
+networks:
+  api-network:
+    external: true
+
+volumes:
+  mysql-volume:
