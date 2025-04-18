@@ -2,7 +2,6 @@ package com.example.usuarios_servicio.model;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import java.util.*;
 
 public class UsuarioSecurity implements UserDetails {

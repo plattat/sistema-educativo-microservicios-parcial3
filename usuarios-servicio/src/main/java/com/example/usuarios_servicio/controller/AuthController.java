@@ -1,7 +1,7 @@
 package com.example.usuarios_servicio.controller;
 
-import com.example.usuarios_servicio.service.*;
 import com.example.usuarios_servicio.model.*;
+import com.example.usuarios_servicio.service.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.*;

@@ -1,7 +1,7 @@
 package com.example.usuarios_servicio.filter;
 
+import com.example.usuarios_servicio.service.JwtUtil;
 import jakarta.servlet.*;
-import com.example.usuarios_servicio.service.*;
 import jakarta.servlet.http.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.*;
@@ -23,10 +23,6 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws ServletException, IOException {
-        if (request.getServletPath().contains("/auth/login")) {
-            chain.doFilter(request, response);
-            return;
-        }
 
         final String authHeader = request.getHeader("Authorization");
 
@@ -44,7 +40,6 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             if (jwtUtil.validarToken(jwt, userDetails)) {
                 UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
                         userDetails, null, userDetails.getAuthorities());
-
                 token.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(token);
             }
