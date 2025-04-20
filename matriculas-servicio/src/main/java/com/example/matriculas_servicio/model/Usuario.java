@@ -1,26 +1,15 @@
 package com.example.matriculas_servicio.model;
 
 public class Usuario {
-    private Long id;
+    private String id;
     private String nombre;
     private String email;
 
-    // Constructor vacío
-    public Usuario() {}
-
-    // Constructor con todos los campos
-    public Usuario(Long id, String nombre, String email) {
-        this.id = id;
-        this.nombre = nombre;
-        this.email = email;
-    }
-
-    // Getters y Setters
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -39,6 +28,4 @@ public class Usuario {
     public void setEmail(String email) {
         this.email = email;
     }
-
-
 }

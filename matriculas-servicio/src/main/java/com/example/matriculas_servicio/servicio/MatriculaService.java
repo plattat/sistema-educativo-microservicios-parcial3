@@ -1,10 +1,12 @@
 package com.example.matriculas_servicio.servicio;
 
+import com.example.matriculas_servicio.dto.MatriculaResponse;
 import com.example.matriculas_servicio.feign.AsignaturaClient;
 import com.example.matriculas_servicio.feign.UsuarioClient;
-import com.example.matriculas_servicio.dto.MatriculaResponse;
 import com.example.matriculas_servicio.model.Asignatura;
+import com.example.matriculas_servicio.model.Matricula;
 import com.example.matriculas_servicio.model.Usuario;
+import com.example.matriculas_servicio.repository.MatriculaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -15,24 +17,36 @@ public class MatriculaService {
 
     private final UsuarioClient usuarioClient;
     private final AsignaturaClient asignaturaClient;
+    private final MatriculaRepository matriculaRepository;
 
-    public MatriculaService(UsuarioClient usuarioClient, AsignaturaClient asignaturaClient) {
+    public MatriculaService(UsuarioClient usuarioClient, AsignaturaClient asignaturaClient,
+                            MatriculaRepository matriculaRepository) {
         this.usuarioClient = usuarioClient;
         this.asignaturaClient = asignaturaClient;
+        this.matriculaRepository = matriculaRepository;
     }
 
     public List<MatriculaResponse> obtenerMatriculasConDetalles() {
+        List<Matricula> matriculas = matriculaRepository.findAll();
         List<MatriculaResponse> lista = new ArrayList<>();
 
-        Usuario u1 = usuarioClient.obtenerUsuarioPorId(1L);
-        Asignatura a1 = asignaturaClient.obtenerAsignaturaPorId(1L);
+        for (Matricula matricula : matriculas) {
+            Usuario usuario = usuarioClient.obtenerUsuario(matricula.getUsuarioId());
+            Asignatura asignatura = asignaturaClient.obtenerAsignaturaPorId(matricula.getAsignaturaId());
 
-        Usuario u2 = usuarioClient.obtenerUsuarioPorId(2L);
-        Asignatura a2 = asignaturaClient.obtenerAsignaturaPorId(2L);
-
-        lista.add(new MatriculaResponse(1L, u1.getNombre(), u1.getEmail(), a1.getNombre(), a1.getDescripcion()));
-        lista.add(new MatriculaResponse(2L, u2.getNombre(), u2.getEmail(), a2.getNombre(), a2.getDescripcion()));
+            lista.add(new MatriculaResponse(
+                    matricula.getId(),
+                    usuario.getNombre(),
+                    usuario.getEmail(),
+                    asignatura.getNombre(),
+                    asignatura.getDescripcion()
+            ));
+        }
 
         return lista;
+    }
+
+    public Matricula guardarMatricula(Matricula matricula) {
+        return matriculaRepository.save(matricula);
     }
 }

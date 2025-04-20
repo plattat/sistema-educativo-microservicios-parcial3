@@ -1,24 +1,36 @@
 package com.example.matriculas_servicio.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "matriculas")
 public class Matricula {
-    private Long id;
-    private Usuario usuario;
-    private Asignatura asignatura;
+    @Id
+    private String id;
+    private String usuarioId;
+    private String asignaturaId;
 
-    public Matricula() {}
-
-    public Matricula(Long id, Usuario usuario, Asignatura asignatura) {
-        this.id = id;
-        this.usuario = usuario;
-        this.asignatura = asignatura;
+    public String getId() {
+        return id;
     }
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public void setId(String id) {
+        this.id = id;
+    }
 
-    public Usuario getUsuario() { return usuario; }
-    public void setUsuario(Usuario usuario) { this.usuario = usuario; }
+    public String getUsuarioId() {
+        return usuarioId;
+    }
 
-    public Asignatura getAsignatura() { return asignatura; }
-    public void setAsignatura(Asignatura asignatura) { this.asignatura = asignatura; }
+    public void setUsuarioId(String usuarioId) {
+        this.usuarioId = usuarioId;
+    }
+
+    public String getAsignaturaId() {
+        return asignaturaId;
+    }
+
+    public void setAsignaturaId(String asignaturaId) {
+        this.asignaturaId = asignaturaId;
+    }
 }

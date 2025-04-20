@@ -1,6 +1,7 @@
 package com.example.matriculas_servicio.controller;
 
 import com.example.matriculas_servicio.dto.MatriculaResponse;
+import com.example.matriculas_servicio.model.Matricula;
 import com.example.matriculas_servicio.servicio.MatriculaService;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,5 +20,10 @@ public class MatriculaController {
     @GetMapping("/completas")
     public List<MatriculaResponse> obtenerMatriculasCompletas() {
         return matriculaService.obtenerMatriculasConDetalles();
+    }
+
+    @PostMapping
+    public Matricula crearMatricula(@RequestBody Matricula matricula) {
+        return matriculaService.guardarMatricula(matricula);
     }
 }

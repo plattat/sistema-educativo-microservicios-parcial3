@@ -7,11 +7,12 @@ import java.util.*;
 public class UsuarioSecurity implements UserDetails {
     private String username;
     private String password;
-    private List<GrantedAuthority> authorities = new ArrayList<>();
+    private List<GrantedAuthority> authorities;
 
-    public UsuarioSecurity(String username, String password) {
+    public UsuarioSecurity(String username, String password, List<GrantedAuthority> authorities) {
         this.username = username;
         this.password = password;
+        this.authorities = authorities;
     }
 
     @Override public Collection<? extends GrantedAuthority> getAuthorities() { return authorities; }

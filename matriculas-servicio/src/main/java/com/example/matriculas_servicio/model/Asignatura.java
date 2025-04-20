@@ -1,26 +1,15 @@
 package com.example.matriculas_servicio.model;
 
 public class Asignatura {
-    private Long id;
+    private String id;
     private String nombre;
     private String descripcion;
 
-    // Constructor vacío
-    public Asignatura () {}
-
-    // Constructor con todos los campos
-    public Asignatura(Long id, String nombre, String descripcion) {
-        this.id = id;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-    }
-
-    // Getters y Setters
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

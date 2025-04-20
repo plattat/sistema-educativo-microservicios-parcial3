@@ -1,5 +1,6 @@
 package com.example.usuarios_servicio.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -10,6 +11,8 @@ public class Usuario {
     private String nombre;
     private String correo;
     private String username;
+
+    @JsonIgnore
     private String password;
 
     public Usuario() {}
