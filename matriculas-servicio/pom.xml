@@ -87,6 +87,14 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
 		</dependency>
+
+		<!-- prometheus -->
+		<dependency>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-registry-prometheus</artifactId>
+		</dependency>
+
+
 	</dependencies>
 
 	<dependencyManagement>
@@ -98,6 +106,9 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+
+
+
 		</dependencies>
 	</dependencyManagement>
 

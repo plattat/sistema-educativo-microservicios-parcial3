@@ -36,6 +36,7 @@ public class SecurityConfig {
                                 "/api/matriculas/completas/**",
                                 "/auth/**",
                                 "/api/auth/**",
+                                "/actuator/**",
                                 "/error" // <--- IMPORTANTE
                         ).permitAll()
 

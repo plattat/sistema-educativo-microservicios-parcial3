@@ -1,0 +1,28 @@
+global:
+  scrape_interval: 10s
+
+scrape_configs:
+  - job_name: 'usuarios-servicio'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['spring-api-usuarios-servicios-container:8082']
+
+  - job_name: 'matriculas-servicio'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['spring-api-matriculas-servicios-container:8083']
+
+  - job_name: 'asignaturas-servicio'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['spring-api-asignaturas-servicios-container:8081']
+
+  - job_name: 'eureka-server'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['spring-api-eureka-server-container:8761']
+
+  - job_name: 'api-gateway'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['spring-api-gateway-container:8080']
