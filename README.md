@@ -304,6 +304,153 @@ Se confirma el funcionamiento y comunicación de los microservicios con Docker.
 ![image](https://github.com/user-attachments/assets/c215625c-7c19-4f4a-97aa-d19a934d24a0)
 
 
+**Prueba Postman**
+
+Usuarios-servicio
+Nos autentificamos por medio de postman
+
+
+![image](https://github.com/user-attachments/assets/c5cb9453-126e-47a3-b622-d99d2f1e8a3b)
+
+Recibimos el token el cual utilizamos para ver los datos de los usuarios
+
+![image](https://github.com/user-attachments/assets/5a9dcde9-b9dc-48e8-a253-d0f8f2b1371e)
+
+Gateway:
+
+![image](https://github.com/user-attachments/assets/5a3899e5-4eb1-4024-93c0-b68bc4d00f32)
+
+**Base de datos.**
+
+Para que los datos se guarden en la base de datos configurar la URL del contenedor de Mongo en el application.properties de cada microservicio:
+
+Microservicio: usuarios
+![image](https://github.com/user-attachments/assets/72bd0d7d-4222-4deb-a0db-ed1c9151ac32)
+
+Microservicio: matriculas
+![image](https://github.com/user-attachments/assets/7528bd07-fd1b-4a1b-b684-3b7a6a81e4ba)
+
+Microservicio: asignaturas
+![image](https://github.com/user-attachments/assets/710b4292-9826-46f6-abb5-91ee59ad43d8)
+
+Bases de datos creadas
+
+Asignaturas 
+![image](https://github.com/user-attachments/assets/314c1e04-3887-4ea4-8699-1f5b1bf98758)
+
+Matriuculas 
+![image](https://github.com/user-attachments/assets/d7ba79d0-19d3-46df-8768-e09840fb5072)
+
+Usuarios
+![image](https://github.com/user-attachments/assets/43478416-36f5-452f-b01c-7ddf00b0e16b)
+
+![image](https://github.com/user-attachments/assets/8e3a96f5-5ed4-442d-be35-f6f60329ee37)
+
+
+**Pipeline:**
+
+Se configuro el archivo build.yml para activar pipeline en git hub
+
+![image](https://github.com/user-attachments/assets/e4c986dd-c01f-425e-bd51-e1b52f9390a6)
+
+![image](https://github.com/user-attachments/assets/6b3764f1-0446-4763-86ef-69802249c5c2)
+
+Resultados:
+![image](https://github.com/user-attachments/assets/f1974d50-0c8a-40ff-83af-fcd1b5c5bf59)
+
+**Prometheus y Grafana**
+
+ Para crear el dasboard con el monitoreo se realizó lo siguiente:
+
+Se creo dos archivos en la raíz del projecto:
+docker-compose.monitor.yml
+
+
+![image](https://github.com/user-attachments/assets/eefecb96-c1f4-4fca-b8b5-e8b665c6e33e)
+
+![image](https://github.com/user-attachments/assets/c1ca1645-fab9-47fc-a05d-f56de0b07b8c)
+
+prometheus.yml
+
+![image](https://github.com/user-attachments/assets/adff08a2-eaf1-4453-bcde-a50d9120abd3)
+
+![image](https://github.com/user-attachments/assets/f6e560cc-da99-4899-85cf-56f1f0208bb7)
+
+En cada microservicio agregar en el pom.xml la siguiente dependencia
+
+![image](https://github.com/user-attachments/assets/7713a56a-83f9-4994-9195-3bb4410ce3d1)
+
+
+Ingresamos al portal de grafana
+
+
+http://localhost:3000/login
+usuario:admin
+contraseña: Colombia15*
+por defecto la contraseña es admin, al iniciar sección se solicita cambiarla
+
+
+![image](https://github.com/user-attachments/assets/25b17f2b-a2fe-45b1-a423-13704b4d1972)
+
+
+Agregamos un Data Source y seleccionamos Prometheus
+
+![image](https://github.com/user-attachments/assets/64ee08ca-8446-4cbd-8fff-e13e5cc60dc1)
+
+
+Importamos un Dasboard 4701 sacado de la pagina de grafana
+
+https://grafana.com/grafana/dashboards/4701-jvm-micrometer/
+
+
+![image](https://github.com/user-attachments/assets/b5e7c530-37c9-4d3b-9209-09d3db9a46ce)
+
+
+Monitoreo:
+El sistema mostrara la instancia que queramos monitorear:
+
+
+![image](https://github.com/user-attachments/assets/688f8665-3a64-4792-8570-da506c979c77)
+
+
+Microservicio Usuarios-servicios
+
+ ![image](https://github.com/user-attachments/assets/bf977f0b-fe36-4913-a8f3-928898c3e6e4)
+
+Microservicio Asignaturas-servicios
+
+![image](https://github.com/user-attachments/assets/0c6a8f15-8ffa-48e4-a06b-7061db3fb320)
+
+Microservicion Matricula 
+
+![image](https://github.com/user-attachments/assets/d9d48597-1fbc-49f8-b981-967e22bc6803)
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 **Autores:**
 **Cristian David Otalvaro Almanza** **&**
