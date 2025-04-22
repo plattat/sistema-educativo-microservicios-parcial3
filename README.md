@@ -18,7 +18,7 @@ Este proyecto implementa una arquitectura de microservicios utilizando Spring Bo
 
 * Eureka Discovery Server
 
-* Feign Client
+* Feign Client.
 
 * Maven
 
