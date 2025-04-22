@@ -7,6 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.ResponseEntity;
+
 
 import java.util.List;
 
@@ -52,6 +54,19 @@ public class UsuarioController {
             return "Error de conexión a Mongo: " + e.getMessage();
         }
     }
+
+    @PostMapping("/register")
+    public ResponseEntity<?> crearUsuario(@RequestBody Usuario usuario) {
+        try {
+            usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
+            Usuario saved = usuarioRepository.save(usuario);
+            return ResponseEntity.ok(saved); // 200 OK + JSON usuario
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("Error al crear usuario: " + e.getMessage());
+        }
+    }
+
+
 
     @GetMapping("/test-ui")
     public String ui() {

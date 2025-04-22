@@ -31,7 +31,16 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             throws ServletException, IOException {
 
         String path = request.getRequestURI();
-        if (path.startsWith("/auth") || path.startsWith("/api/usuarios")) {
+        String method = request.getMethod();
+
+        // ✅ Permitir GET y POST a /api/usuarios sin token
+        boolean isPublicUserRoute = path.startsWith("/api/usuarios") &&
+                (method.equalsIgnoreCase("POST") || method.equalsIgnoreCase("GET"));
+
+        // ✅ Permitir cualquier acceso a /auth/**
+        boolean isAuthRoute = path.startsWith("/auth");
+
+        if (isPublicUserRoute || isAuthRoute) {
             chain.doFilter(request, response);
             return;
         }

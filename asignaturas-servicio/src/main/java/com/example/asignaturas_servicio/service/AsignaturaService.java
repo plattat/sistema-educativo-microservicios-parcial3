@@ -4,6 +4,7 @@ import com.example.asignaturas_servicio.model.Asignatura;
 import com.example.asignaturas_servicio.repository.AsignaturaRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -21,5 +22,9 @@ public class AsignaturaService {
 
     public Asignatura guardar(Asignatura asignatura) {
         return asignaturaRepository.save(asignatura);
+    }
+
+    public List<Asignatura> obtenerTodas() {
+        return asignaturaRepository.findAll();
     }
 }

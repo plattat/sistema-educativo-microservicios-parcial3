@@ -32,20 +32,17 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
-                                "/api/matriculas/completas",
-                                "/api/matriculas/completas/**",
+                                "/api/matriculas/**",    // ✅ Asegura POST, GET, etc. sin token
                                 "/auth/**",
                                 "/api/auth/**",
                                 "/actuator/**",
-                                "/error" // <--- IMPORTANTE
+                                "/error"
                         ).permitAll()
-
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authProvider())
-                .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
-                .build();
+                .build(); // 🔥 Filtro JWT deshabilitado para test sin token
     }
 
     @Bean

@@ -17,13 +17,18 @@ public class MatriculaController {
         this.matriculaService = matriculaService;
     }
 
+    @PostMapping("/api/matriculas")
+    public Matricula crearMatricula(@RequestBody Matricula matricula) {
+        return matriculaService.guardarMatricula(matricula);
+    }
+
     @GetMapping("/completas")
     public List<MatriculaResponse> obtenerMatriculasCompletas() {
         return matriculaService.obtenerMatriculasConDetalles();
     }
 
-    @PostMapping
-    public Matricula crearMatricula(@RequestBody Matricula matricula) {
-        return matriculaService.guardarMatricula(matricula);
+    @GetMapping("/usuario/{id}")
+    public List<MatriculaResponse> obtenerPorUsuario(@PathVariable String id) {
+        return matriculaService.obtenerPorUsuario(id);
     }
 }
